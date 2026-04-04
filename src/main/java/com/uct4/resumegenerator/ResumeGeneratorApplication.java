@@ -1,4 +1,4 @@
-package com.example.resumegenerator;
+package com.uct4.resumegenerator;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

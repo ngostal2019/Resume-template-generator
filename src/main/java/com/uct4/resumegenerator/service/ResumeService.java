@@ -1,7 +1,7 @@
-package com.example.resumegenerator.service;
+package com.uct4.resumegenerator.service;
 
-import com.example.resumegenerator.model.ResumeRequest;
-import com.example.resumegenerator.model.ResumeResponse;
+import com.uct4.resumegenerator.model.ResumeRequest;
+import com.uct4.resumegenerator.model.ResumeResponse;
 import org.springframework.stereotype.Service;
 
 import java.time.OffsetDateTime;

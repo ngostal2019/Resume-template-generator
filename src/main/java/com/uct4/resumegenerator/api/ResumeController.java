@@ -1,8 +1,8 @@
-package com.example.resumegenerator.api;
+package com.uct4.resumegenerator.api;
 
-import com.example.resumegenerator.model.ResumeRequest;
-import com.example.resumegenerator.model.ResumeResponse;
-import com.example.resumegenerator.service.ResumeService;
+import com.uct4.resumegenerator.model.ResumeRequest;
+import com.uct4.resumegenerator.model.ResumeResponse;
+import com.uct4.resumegenerator.service.ResumeService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;

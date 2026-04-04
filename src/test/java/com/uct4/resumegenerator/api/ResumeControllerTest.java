@@ -1,4 +1,4 @@
-package com.example.resumegenerator.api;
+package com.uct4.resumegenerator.api;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

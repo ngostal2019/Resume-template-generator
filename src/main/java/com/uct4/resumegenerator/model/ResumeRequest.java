@@ -1,4 +1,4 @@
-package com.example.resumegenerator.model;
+package com.uct4.resumegenerator.model;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;

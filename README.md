@@ -111,22 +111,20 @@ Three tests are included: list templates, generate preview, reject invalid paylo
 
 ## Project Structure
 
-```
-src/
-├── main/
-│   ├── java/com/example/resumegenerator/
-│   │   ├── ResumeGeneratorApplication.java
-│   │   ├── api/ResumeController.java
-│   │   ├── model/
-│   │   │   ├── Certification.java
-│   │   │   ├── Education.java
-│   │   │   ├── ResumeRequest.java
-│   │   │   ├── ResumeResponse.java
-│   │   │   └── WorkExperience.java
-│   │   └── service/ResumeService.java
-│   └── resources/
-│       ├── application.properties
-│       └── static/index.html     ← browser UI
-└── test/
-    └── java/.../api/ResumeControllerTest.java
-```
+| Path | Role |
+|---|---|
+| `pom.xml` | Maven build descriptor — dependencies, Java version, WAR packaging |
+| `.gitignore` | Excludes build output, IDE files, secrets, and server runtimes from git |
+| `README.md` | Project documentation (this file) |
+| `src/main/java/com/uct4/resumegenerator/` | Root Java package |
+| `ResumeGeneratorApplication.java` | Spring Boot entry point; extends `SpringBootServletInitializer` for WAR deployment |
+| `api/ResumeController.java` | REST controller — exposes `GET /templates` and `POST /preview` endpoints |
+| `model/ResumeRequest.java` | Validated input record — all fields a client sends to generate a resume |
+| `model/ResumeResponse.java` | Output record — structured resume data returned to the client |
+| `model/Certification.java` | Nested record — certification name, provider, obtained date, expiration date |
+| `model/Education.java` | Nested record — degree, institution, start year, end year |
+| `model/WorkExperience.java` | Nested record — job title, company, start date, end date |
+| `service/ResumeService.java` | Business logic — builds the `ResumeResponse` from the incoming `ResumeRequest` |
+| `src/main/resources/application.properties` | Spring Boot configuration — app name, Swagger UI path, API docs path |
+| `src/main/resources/static/index.html` | Browser UI — two-panel form + live preview with download buttons (HTML/PDF/Word) |
+| `src/test/java/.../api/ResumeControllerTest.java` | Integration tests — list templates, generate preview, reject invalid payload |
