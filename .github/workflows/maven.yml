@@ -47,6 +47,7 @@ jobs:
         jf c add setup-jfrog-cli-server \
           --url="$JF_URL" \
           --access-token=$JF_TOKEN \
+          --user admin
           --interactive=false --overwrite
 
         # 1. Configure the project to point to your specific JFrog repo
