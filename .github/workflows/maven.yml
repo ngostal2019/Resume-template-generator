@@ -39,6 +39,11 @@ jobs:
         JF_TOKEN: ${{ secrets.JF_ACCESS_TOKEN }}
     - name: Build and Publish to JFrog
       run: |
+        jf c add setup-jfrog-cli-server \
+          --url=${{ vars.JF_URL }} \
+          --access-token=${{ secrets.JF_ACCESS_TOKEN }} \
+          --interactive=false --overwrite
+          
         # 1. Configure the project to point to your specific JFrog repo
         jf mvn-config \
           --server-id-deploy setup-jfrog-cli-server \
@@ -50,7 +55,7 @@ jobs:
           
 
         # 2. Run the build through the JFrog CLI to capture metadata
-        jf mvn clean package -B
+        jf mvn clean install -B
 
         # 3. Publish the build info to Artifactory for full traceability
         jf rt build-collect-env
