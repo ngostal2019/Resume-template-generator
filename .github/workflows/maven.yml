@@ -54,8 +54,6 @@ jobs:
         jf mvn-config \
           --server-id-deploy setup-jfrog-cli-server \
           --server-id-resolve setup-jfrog-cli-server \
-          --repo-resolve-releases github-action-artifacts \
-          --repo-resolve-snapshots github-action-artifacts \
           --repo-deploy-releases github-action-artifacts \
           --repo-deploy-snapshots github-action-artifacts \
           
