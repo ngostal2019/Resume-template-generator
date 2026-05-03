@@ -39,6 +39,7 @@ jobs:
         JF_TOKEN: ${{ secrets.JF_ACCESS_TOKEN }}
     - name: Build and Publish to JFrog
       run: |
+        export JFROG_CLI_HOME_DIR=$GITHUB_WORKSPACE/.jfrog
         jf c add setup-jfrog-cli-server \
           --url="$JF_URL" \
           --access-token=$JF_TOKEN \
