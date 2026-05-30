@@ -44,7 +44,7 @@ pipeline {
       steps {
           // Deploy step provided by the Deploy to Container Plugin
           sh 'pwd'
-          sh 'ls -l'
+          sh 'ls -l target/'
           // deploy adapters: [tomcat9(
           //         alternativeDeploymentContext: '',
           //         credentialsId: "${env.TOMCAT_DEPLOYER_ID}",
