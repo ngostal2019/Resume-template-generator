@@ -14,7 +14,7 @@ pipeline {
         stage('Display SCM Info') {
             steps {
                 sh """
-                printenv
+                echo ${BUILD_TAG}
                 """
             }
         }
