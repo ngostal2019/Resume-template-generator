@@ -43,17 +43,19 @@ pipeline {
     stage('Deploy to Tomcat 11') {
       steps {
           // Deploy step provided by the Deploy to Container Plugin
-          deploy adapters: [tomcat9(
-                  alternativeDeploymentContext: '',
-                  credentialsId: "${env.TOMCAT_DEPLOYER_ID}",
-                  path: '',
-                  url: 'http://${env.TOMCAT_SERVER_IP}:${env.TOMCAT_SERVER_PORT}/',
-                  )
-            ],
+          sh 'pwd'
+          sh 'ls -l'
+          // deploy adapters: [tomcat9(
+          //         alternativeDeploymentContext: '',
+          //         credentialsId: "${env.TOMCAT_DEPLOYER_ID}",
+          //         path: '',
+          //         url: 'http://${env.TOMCAT_SERVER_IP}:${env.TOMCAT_SERVER_PORT}/',
+          //         )
+          //   ],
             
-                contextPath: null, 
-                war: '${env.WAR_FILE_BUILT}',
-                onFailure: false
+          //       contextPath: null, 
+          //       war: '${env.WAR_FILE_BUILT}',
+          //       onFailure: false
       }
     }
   }
