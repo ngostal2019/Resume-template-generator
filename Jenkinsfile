@@ -2,9 +2,10 @@ pipeline {
   agent any
 
   environment {
-    TOMCAT_DEPLOYER_ID='deployer'
-    TOMCAT_SERVER_IP='34.205.247.151'
-    TOMCAT_SERVER_PORT='8080'
+    TOMCAT_DEPLOYER_ID="deployer"
+    TOMCAT_SERVER_IP="34.205.247.151"
+    TOMCAT_SERVER_PORT="8080"
+    WAR_FILE="**/*.war"
   }
 
   tools {
@@ -41,22 +42,19 @@ pipeline {
     }
     stage('Deploy to Tomcat 11') {
       steps {
-          def TOMCAT_DEPLOYER_ID = ${env.TOMCAT_DEPLOYER_ID}
-          def TOMCAT_SERVER_IP = ${env.TOMCAT_SERVER_IP}
-          def TOMCAT_SERVER_PORT = ${env.TOMCAT_SERVER_PORT}
           // Deploy step provided by the Deploy to Container Plugin
           sh 'pwd'
           sh 'ls -l target/'
           deploy adapters: [tomcat9(
                   alternativeDeploymentContext: '',
-                  credentialsId: "${TOMCAT_DEPLOYER_ID}",
+                  credentialsId: "${env.TOMCAT_DEPLOYER_ID}",
                   path: '',
-                  url: 'http://${TOMCAT_SERVER_IP}:${TOMCAT_SERVER_PORT}/'
+                  url: "http://${env.TOMCAT_SERVER_IP}:${env.TOMCAT_SERVER_PORT}/"
                   )
             ],
             
                 contextPath: null, 
-                war: '**/*.war',
+                war: "${env.WAR_FILE}",
                 onFailure: false
       }
     }
