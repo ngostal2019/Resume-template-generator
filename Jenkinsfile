@@ -46,9 +46,9 @@ pipeline {
           sh 'ls -l target/'
           deploy adapters: [tomcat9(
                   alternativeDeploymentContext: '',
-                  credentialsId: "${env.TOMCAT_DEPLOYER_ID}",
+                  credentialsId: "${TOMCAT_DEPLOYER_ID}",
                   path: '',
-                  url: 'http://${env.TOMCAT_SERVER_IP}:${env.TOMCAT_SERVER_PORT}/'
+                  url: 'http://${TOMCAT_SERVER_IP}:${TOMCAT_SERVER_PORT}/'
                   )
             ],
             
