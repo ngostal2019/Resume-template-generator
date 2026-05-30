@@ -35,6 +35,11 @@ pipeline {
         sh 'mvn package -DskipTests'
       }
     }
+    stage('Print Envs') {
+      steps {
+        sh 'printenv'
+      }
+    }
     // stage('Deploy to Tomcat 11') {
     //   steps {
     //       // Deploy step provided by the Deploy to Container Plugin
