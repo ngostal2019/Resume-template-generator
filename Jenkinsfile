@@ -5,7 +5,6 @@ pipeline {
     TOMCAT_DEPLOYER_ID='deployer'
     TOMCAT_SERVER_IP='34.205.247.151'
     TOMCAT_SERVER_PORT='8080'
-    WAR_FILE_BUILT='target/r*.war'
   }
 
   tools {
@@ -54,7 +53,7 @@ pipeline {
             ],
             
                 contextPath: null, 
-                war: '${env.WAR_FILE_BUILT}',
+                war: '**/*.war',
                 onFailure: false
       }
     }
