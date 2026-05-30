@@ -2,7 +2,7 @@ pipeline {
   agent any
 
   environment {
-    TOMCAT_DEPLOY_ID='deployer'
+    TOMCAT_DEPLOYER_ID='deployer'
     TOMCAT_SERVER_IP='34.205.247.151'
     TOMCAT_SERVER_PORT='8080'
     WAR_FILE_BUILT='**/*.war'
@@ -40,20 +40,22 @@ pipeline {
         sh 'printenv'
       }
     }
-    // stage('Deploy to Tomcat 11') {
-    //   steps {
-    //       // Deploy step provided by the Deploy to Container Plugin
-    //       deploy artifacts: '${env.WAR_FILE_BUILT}', 
-    //             contextPath: '', 
-    //             war: null, 
-    //             containers: [
-    //                 tomcat9x(
-    //                     url: 'http://${env.TOMCAT_SERVER_IP}:${env.TOMCAT_SERVER_PORT}',
-    //                     credentialsId: "${env.TOMCAT_DEPLOY_ID}",
-    //                 )
-    //             ]
-    //   }
-    // }
+    stage('Deploy to Tomcat 11') {
+      steps {
+          // Deploy step provided by the Deploy to Container Plugin
+          deploy adapters: [tomcat9(
+                  alternativeDeploymentContext: '',
+                  credentialsId: "${env.TOMCAT_DEPLOYER_ID}",
+                  path: '',
+                  url: 'http://${env.TOMCAT_SERVER_IP}:${env.TOMCAT_SERVER_PORT}/',
+                  )
+            ],
+            
+                contextPath: null, 
+                war: '${env.WAR_FILE_BUILT}',
+                onFailure: false
+      }
+    }
   }
   // post {
   //     always {
