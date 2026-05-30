@@ -22,7 +22,7 @@ pipeline {
     }
     stage('Maven Install') {
       steps {
-        sh 'mvn -B install'
+        sh 'mvn -B install -DskipTests'
       }
     }
     stage('Maven Test') {
@@ -32,12 +32,7 @@ pipeline {
     }
     stage('Maven Package WAR file') {
       steps {
-        sh 'mvn package'
-      }
-    }
-    stage('Checking Envs') {
-      steps {
-        sh 'printenv'
+        sh 'mvn package -DskipTests'
       }
     }
     // stage('Deploy to Tomcat 11') {
