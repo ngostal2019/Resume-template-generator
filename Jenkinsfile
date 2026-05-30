@@ -40,10 +40,10 @@ pipeline {
       }
     }
     stage('Deploy to Tomcat 11') {
-      def TOMCAT_DEPLOYER_ID = ${env.TOMCAT_DEPLOYER_ID}
-      def TOMCAT_SERVER_IP = ${env.TOMCAT_SERVER_IP}
-      def TOMCAT_SERVER_PORT = ${env.TOMCAT_SERVER_PORT}
       steps {
+          def TOMCAT_DEPLOYER_ID = ${env.TOMCAT_DEPLOYER_ID}
+          def TOMCAT_SERVER_IP = ${env.TOMCAT_SERVER_IP}
+          def TOMCAT_SERVER_PORT = ${env.TOMCAT_SERVER_PORT}
           // Deploy step provided by the Deploy to Container Plugin
           sh 'pwd'
           sh 'ls -l target/'
