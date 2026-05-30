@@ -5,7 +5,7 @@ pipeline {
     TOMCAT_DEPLOYER_ID='deployer'
     TOMCAT_SERVER_IP='34.205.247.151'
     TOMCAT_SERVER_PORT='8080'
-    WAR_FILE_BUILT='**/*.war'
+    WAR_FILE_BUILT='target/r*.war'
   }
 
   tools {
@@ -45,17 +45,17 @@ pipeline {
           // Deploy step provided by the Deploy to Container Plugin
           sh 'pwd'
           sh 'ls -l target/'
-          // deploy adapters: [tomcat9(
-          //         alternativeDeploymentContext: '',
-          //         credentialsId: "${env.TOMCAT_DEPLOYER_ID}",
-          //         path: '',
-          //         url: 'http://${env.TOMCAT_SERVER_IP}:${env.TOMCAT_SERVER_PORT}/',
-          //         )
-          //   ],
+          deploy adapters: [tomcat9(
+                  alternativeDeploymentContext: '',
+                  credentialsId: "${env.TOMCAT_DEPLOYER_ID}",
+                  path: '',
+                  url: 'http://${env.TOMCAT_SERVER_IP}:${env.TOMCAT_SERVER_PORT}/'
+                  )
+            ],
             
-          //       contextPath: null, 
-          //       war: '${env.WAR_FILE_BUILT}',
-          //       onFailure: false
+                contextPath: null, 
+                war: '${env.WAR_FILE_BUILT}',
+                onFailure: false
       }
     }
   }
